@@ -19,7 +19,7 @@ resource "aws_lambda_function" "app" {
   # Actual code needs to be deployed via command line (aws cli command for replacing lambda zip file)
   filename = "${path.module}/files/hello-world-api-proxy.js.zip"
 
-  # depends_on = [
-  #   aws_cloudwatch_log_group.lambda,
-  # ]
+  depends_on = [
+    aws_cloudwatch_log_group.app,
+  ]
 }

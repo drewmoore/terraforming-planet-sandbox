@@ -15,8 +15,8 @@ data "aws_iam_policy_document" "app-assume-role" {
   }
 }
 
-# resource "aws_iam_role_policy" "lambda-cloudwatch-log-group" {
-#   name   = "cloudwatch-log-group"
-#   role   = aws_iam_role.app.name
-#   policy = data.aws_iam_policy_document.cloudwatch-log-group-lambda.json
-# }
+resource "aws_iam_role_policy" "lambda-cloudwatch-log-group" {
+  name   = "cloudwatch-log-group"
+  role   = aws_iam_role.app.name
+  policy = data.aws_iam_policy_document.cloudwatch-log-group-app.json
+}

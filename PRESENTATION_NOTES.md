@@ -8,6 +8,21 @@
 
 ## Presentation Steps
 
-- show terraform files before initialization
-- run `terraform init`
-- show files created
+- Initial setup
+  - show terraform files before initialization
+  - run `terraform init`
+  - show files created
+- Hello World lambda
+  - Add lambda without environment or depends_on loggroup
+  - Add lambda-role with just permission to assume role
+  - `terraform apply`
+  - Test in AWS UI with sample event
+    - Will have link to logs that don't exist.
+- Hello World lambda with logs
+  - Add lambda-logs
+  - Add aws_identity
+  - Add to lambda: depends_on loggroup
+  - Add to lambda-role: policy for log group
+  - `terraform apply`
+  - Test in AWS UI with sample event
+    - Will have link to logs that should now exist.
