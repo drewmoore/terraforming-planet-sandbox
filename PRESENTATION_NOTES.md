@@ -27,3 +27,10 @@
   - Test in AWS UI with sample event
     - Will have link to logs that should now exist.
 - Hello World web app with API Gateway
+  - Start web app locally to demonstrate expectations
+  - Deploy web app
+  - Add apigateway
+  - Add apigateway-stage without logging
+  - `terraform apply`
+  - Get invoke URL from API Gateway Stages UI
+  - Request invoke_url/hello?name=Andrew

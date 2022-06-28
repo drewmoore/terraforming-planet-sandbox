@@ -8,4 +8,4 @@ npm ci
 npm run start-local
 ```
 
-Can request http://localhost:3000?name=MyName
+Can request http://localhost:3000/hello?name=MyName

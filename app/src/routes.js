@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get('/hello', async (req, res, next) => {
   try {
     const response = { message: `Hello ${req.query.name || 'World'}!` }
 
