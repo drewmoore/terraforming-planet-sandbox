@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Assumes that your shell is configured with a profile named "sandbox" that assumes the role needed to access the sandbox account.
+# See your local ~/.aws/config
+export AWS_PROFILE=sandbox
+
+# Give this a unique app name so that it doesn't conflict with other developers' experimentation in the sandbox
+export TF_VAR_APP_NAME=
