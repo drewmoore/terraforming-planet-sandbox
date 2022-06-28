@@ -26,3 +26,4 @@
   - `terraform apply`
   - Test in AWS UI with sample event
     - Will have link to logs that should now exist.
+- Hello World web app with API Gateway

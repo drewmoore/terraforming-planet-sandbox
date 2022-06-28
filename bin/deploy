@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# let build fail on error
+set -eu
+
+. ./infrastructure/.envrc
+
+export BUNDLE_FOLDER=lambda_build
+
+echo "creating $BUNDLE_FOLDER folder..."
+rm -rf $BUNDLE_FOLDER && mkdir $BUNDLE_FOLDER
+
+echo "copying source code..."
+cd app
+cp -r {src,index.js,package.json,package-lock.json} ../$BUNDLE_FOLDER
+
+echo "install production dependencies..."
+cd ../$BUNDLE_FOLDER
+npm ci --production
+
+echo "zip code..."
+zip -rq index.zip *
+
+echo "cleanup..."
+ls | grep -v index.zip | xargs rm -rf
+
+aws lambda update-function-code \
+  --function-name $TF_VAR_APP_NAME \
+  --zip-file fileb://index.zip
