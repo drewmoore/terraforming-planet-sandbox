@@ -34,3 +34,8 @@
   - `terraform apply`
   - Get invoke URL from API Gateway Stages UI
   - Request invoke_url/hello?name=Andrew
+- With API Gateway logging
+  - Uncomment access_log_settings and depends_on in aws_api_gateway_stage
+  - Add apigateway-logs
+  - `terraform apply`
+  - Make request and find gateway access logs using api ID
