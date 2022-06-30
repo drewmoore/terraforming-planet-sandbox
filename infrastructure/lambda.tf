@@ -10,10 +10,11 @@ resource "aws_lambda_function" "app" {
 
   role = aws_iam_role.app.arn
 
-  #environment {
-  #  variables = {
-  #  }
-  #}
+  environment {
+    variables = {
+      PRIVATE_LAMBDA_ARN = aws_lambda_function.private.arn
+    }
+  }
 
   # Placeholder hello-world app.
   # Actual code needs to be deployed via command line (aws cli command for replacing lambda zip file)

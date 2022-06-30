@@ -39,3 +39,13 @@
   - Add apigateway-logs
   - `terraform apply`
   - Make request and find gateway access logs using api ID
+- With cloud-only service
+  - Add private-lambda
+  - Uncomment lambda environment that has private arn
+  - `terraform apply`
+  - Copy private_lambda_arn terraform output to env var in .envrc.development
+  - in ./app:
+    - `. .envrc.development`
+    - `npm run start-local`
+    - Request http://localhost:3000/private?name=Andrew
+    - Should respond with permissions error

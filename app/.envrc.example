@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Replace value after private lambda has been created by terraform. Get the ARN from the output.
+export PRIVATE_LAMBDA_ARN=arn:aws:lambda:us-east-1:abc123:function:PLACEHOLDER
+
+# Uses your local ~/.aws/credentials so that we don't have to show them in presentation.
+export AWS_SDK_LOAD_CONFIG=1
