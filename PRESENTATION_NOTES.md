@@ -48,4 +48,4 @@
     - `. .envrc.development`
     - `npm run start-local`
     - Request http://localhost:3000/private?name=Andrew
-    - Should respond with permissions error
+    - Should respond with success and random number in payload
