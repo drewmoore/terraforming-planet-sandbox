@@ -1,4 +1,5 @@
 const express = require('express');
+const { initializeLambda } = require('./services/lambda');
 
 const router = express.Router();
 
@@ -12,10 +13,10 @@ router.get('/hello', async (req, res, next) => {
   }
 });
 
-const Lambda = require('aws-sdk/clients/lambda');
 
 const privateLambdaArn = process.env.PRIVATE_LAMBDA_ARN;
-const privateLambda = new Lambda({ region: privateLambdaArn.split(':')[3] })
+let privateLambda;
+initializeLambda(privateLambdaArn).then((l) => { privateLambda = l; });
 
 router.get('/private', async (req, res, next) => {
   try {

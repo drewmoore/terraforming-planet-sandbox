@@ -6,5 +6,10 @@ export PRIVATE_LAMBDA_ARN=arn:aws:lambda:us-east-1:abc123:function:PLACEHOLDER
 # Uses your local ~/.aws/credentials so that we don't have to show them in presentation.
 export AWS_SDK_LOAD_CONFIG=1
 
-# Use a predefined profile that should make your user assume the role that accesses the sandbox. This is the same config used when applying terraform.
+# Use a predefined profile that should make your user assume the role that accesses the sandbox.
+# This is the same config used when applying terraform.
 export AWS_PROFILE=sandbox
+
+# For a role that will be created by terraform. This will have no privileges assigned so that you
+# get the real feeling of a least-privilege environment locally.
+export UNPRIVILEGED_ROLE_ARN=arn:aws:iam::abc123:role/PLACEHOLDER

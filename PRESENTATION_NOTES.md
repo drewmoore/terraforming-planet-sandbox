@@ -49,3 +49,11 @@
     - `npm run start-local`
     - Request http://localhost:3000/private?name=Andrew
     - Should respond with success and random number in payload
+  - Deploy web app
+  - Request production private path
+    - should respond with error
+    - show discrepancy with local results and explain need to align these results
+  - Add local-app
+  - `terraform apply`
+  - get role_arn output and add to env var for local app
+  - show new local error due to insufficient privileges, which is expected and what we want
