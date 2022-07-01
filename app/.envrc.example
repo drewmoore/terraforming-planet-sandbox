@@ -12,4 +12,4 @@ export AWS_PROFILE=sandbox
 
 # For a role that will be created by terraform. This will have no privileges assigned so that you
 # get the real feeling of a least-privilege environment locally.
-export UNPRIVILEGED_ROLE_ARN=arn:aws:iam::abc123:role/PLACEHOLDER
+export UNPRIVILEGED_ROLE_ARN=

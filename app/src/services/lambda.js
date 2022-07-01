@@ -3,25 +3,27 @@ const STS = require('aws-sdk/clients/sts');
 
 const initializeLambda = async (lambdaArn) => {
   const lambdaConfig = { region: lambdaArn.split(':')[3] };
+  const roleArn = process.env.UNPRIVILEGED_ROLE_ARN;
 
-  // TODO: comment-out all of this for credentials before presentation.
-  const response = await new STS().assumeRole({
-    RoleArn: process.env.UNPRIVILEGED_ROLE_ARN,
-    RoleSessionName: 'unprivileged',
-  }).promise();
-  const {
-    AccessKeyId: accessKeyId,
-    SecretAccessKey: secretAccessKey,
-    SessionToken: sessionToken
-  } = response.Credentials;
+  if (roleArn && roleArn.length) {
+    const response = await new STS().assumeRole({
+      RoleArn: roleArn,
+      RoleSessionName: 'unprivileged',
+    }).promise();
+    const {
+      AccessKeyId: accessKeyId,
+      SecretAccessKey: secretAccessKey,
+      SessionToken: sessionToken
+    } = response.Credentials;
 
-  Object.assign(lambdaConfig, {
-    credentials: {
-      accessKeyId,
-      secretAccessKey,
-      sessionToken
-    }
-  });
+    Object.assign(lambdaConfig, {
+      credentials: {
+        accessKeyId,
+        secretAccessKey,
+        sessionToken
+      }
+    });
+  }
 
   return new Lambda(lambdaConfig);
 };
