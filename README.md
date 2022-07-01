@@ -16,3 +16,7 @@ Will deploy the current local code to the lambda in the sandbox. This will have 
 ```sh
 ./bin/deploy
 ```
+
+## Completed Project
+
+The changes needed for running the full project successfully on the cloud and locally can be found on the [following branch](https://github.com/drewmoore/terraforming-planet-sandbox/compare/completed-project).
