@@ -23,3 +23,9 @@ data "aws_iam_policy_document" "local-app-assume-role" {
 output "role_arn" {
   value = aws_iam_role.local-app.arn
 }
+
+resource "aws_lambda_permission" "local-app-invoke-private-lambda" {
+  principal     = aws_iam_role.local-app.arn
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.private.arn
+}

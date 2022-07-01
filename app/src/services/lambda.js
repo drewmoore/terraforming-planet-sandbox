@@ -10,6 +10,7 @@ const initializeLambda = async (lambdaArn) => {
       RoleArn: roleArn,
       RoleSessionName: 'unprivileged',
     }).promise();
+
     const {
       AccessKeyId: accessKeyId,
       SecretAccessKey: secretAccessKey,
