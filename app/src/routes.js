@@ -13,10 +13,13 @@ router.get('/hello', async (req, res, next) => {
   }
 });
 
+/* For more complex use-case involving permissions for a private service and role-chaining */
 
 const privateLambdaArn = process.env.PRIVATE_LAMBDA_ARN;
 let privateLambda;
-initializeLambda(privateLambdaArn).then((l) => { privateLambda = l; });
+if (privateLambdaArn) {
+  initializeLambda(privateLambdaArn).then((l) => { privateLambda = l; });
+}
 
 router.get('/private', async (req, res, next) => {
   try {
